@@ -3,7 +3,11 @@ function ApodDisplay({ apod }) {
     apod?.error ? (
       <p>Something went wrong! {apod.error}</p>
     ) : (
-      <img src={apod.url} alt={apod.title}></img>
+      <figure>
+        <p>Astronomy Picture of the Day:</p>
+        <img src={apod.url} alt={apod.title}></img>
+        <figcaption>{apod.explanation}</figcaption>
+      </figure>
     )
   ) : (
     <p>Loading...</p>
