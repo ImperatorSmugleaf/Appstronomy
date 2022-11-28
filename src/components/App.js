@@ -18,7 +18,7 @@ function App() {
         setApod({ error: `Error ${response.status}` })
       }
     })
-  }, [apod])
+  }, [])
 
   return (
     <div className="App">
