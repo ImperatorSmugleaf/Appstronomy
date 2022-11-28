@@ -1,10 +1,9 @@
 import './App.css'
 import ApodDisplay from './ApodDisplay'
 import { useState, useEffect } from 'react'
-import { KEY } from '../services/apiService'
 import Search from './Search'
 
-const apodURL = `https://api.nasa.gov/planetary/apod?api_key=${KEY}`
+const apodURL = `https://classproxy.rtoal.repl.co/apod`
 
 function App() {
   // const user = useAuthentication();
