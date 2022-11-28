@@ -4,9 +4,11 @@ function ApodDisplay({ apod }) {
       <p>Something went wrong! {apod.error}</p>
     ) : (
       <figure>
-        <p>Astronomy Picture of the Day:</p>
-        <img src={apod.url} alt={apod.title}></img>
-        <figcaption>{apod.explanation}</figcaption>
+        <p id="apodHeader">Astronomy Picture of the Day:</p>
+        <div class="imgbox">
+          <img id="apodImg" src={apod.url} alt={apod.title}></img>
+        </div>
+        <figcaption id="apodExplanation">{apod.explanation}</figcaption>
       </figure>
     )
   ) : (

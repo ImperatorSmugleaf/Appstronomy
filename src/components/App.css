@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+#apodHeader {
+  font-weight: bold;
+  font-style: oblique;
+  margin: 0%;
+}
+
+#apodExplanation {
+  margin: 15px;
+  border: double rgb(35, 35, 77);
+}
+
+.imgbox {
+  display: grid;
+  width: 100%;
+  height: 95%;
+}
+#apodImg {
+  margin: auto;
+  max-width: 100vh;
+  max-height: 80%;
+}
