@@ -23,6 +23,7 @@ function App() {
 
   return (
     <div className="App">
+      <div className="Stars"></div>
       <ApodDisplay apod={apod} />
       <Search setData={setData} />
       {data ? <img src={data.collection.items[0].links[0].href} /> : ''}

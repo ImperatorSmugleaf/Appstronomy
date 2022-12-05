@@ -1,5 +1,57 @@
 .App {
   text-align: center;
+  display: inline-block;
+  /*background-image: linear-gradient(#1d1135, #0c164f, #ba1e68, #5643fd, #7649fe, #fcfbfe);*/
+  background-color: #000;
+}
+
+.Stars {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 1px;
+  width: 1px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 2vw -11vh 2px 2px #fff, -30vw 1vh 3px 0px #fff, 8vw 9vh 0px 1px #fff, -46vw 48vh 2px 0px #fff,
+    49vw -34vh 3px 2px #fff, 35vw 28vh 2px 2px #fff, -28vw -42vh 3px 2px #fff, -16vw 32vh 3px 0px #fff,
+    -50vw -1vh 3px 1px #fff, -26vw -25vh 1px 1px #fff, 36vw -17vh 3px 2px #fff, 6vw -47vh 2px 1px #fff,
+    5vw 7vh 0px 2px #fff, 22vw -3vh 1px 2px #fff, -14vw 26vh 0px 1px #fff, 6vw 14vh 0px 2px #fff,
+    15vw -11vh 0px 2px #fff, 41vw -49vh 1px 1px #fff, 27vw -1vh 3px 2px #fff, 8vw 26vh 2px 1px #fff,
+    -47vw 23vh 3px 3px #fff, -2vw 2vh 0px 0px #fff, 34vw 38vh 3px 2px #fff, -28vw -44vh 0px 1px #fff,
+    -27vw 1vh 1px 2px #fff, 31vw 21vh 3px 3px #fff, 0vw -31vh 2px 1px #fff, 48vw 11vh 3px 0px #fff,
+    46vw 28vh 3px 0px #fff, 2vw 47vh 0px 2px #fff, 36vw 6vh 1px 1px #fff, 33vw 10vh 1px 2px #fff,
+    -28vw 40vh 0px 2px #fff, -28vw -3vh 1px 3px #fff, -24vw 45vh 0px 3px #fff, 0vw -12vh 1px 0px #fff,
+    21vw 16vh 3px 2px #fff, 26vw 10vh 2px 3px #fff, 13vw 27vh 0px 1px #fff, -1vw 30vh 1px 3px #fff,
+    -32vw 9vh 3px 1px #fff, -24vw 41vh 0px 0px #fff, -15vw -29vh 2px 1px #fff, 21vw 19vh 0px 1px #fff,
+    13vw -42vh 2px 1px #fff, -13vw -11vh 1px 3px #fff, -25vw 34vh 0px 1px #fff, -14vw 6vh 2px 2px #fff,
+    21vw 37vh 2px 0px #fff, 26vw 26vh 1px 1px #fff, 29vw -17vh 2px 0px #fff, 10vw 7vh 2px 1px #fff,
+    -39vw 33vh 3px 3px #fff, -44vw 6vh 1px 2px #fff, -31vw -32vh 2px 0px #fff, -41vw 38vh 0px 3px #fff,
+    -43vw -23vh 3px 1px #fff, -50vw 48vh 0px 2px #fff, 25vw 9vh 2px 0px #fff, -2vw -13vh 3px 3px #fff,
+    -26vw -46vh 3px 2px #fff, -25vw 32vh 2px 2px #fff, 17vw -42vh 0px 3px #fff, 31vw 12vh 1px 3px #fff,
+    47vw 36vh 3px 1px #fff, -13vw 33vh 3px 1px #fff, -5vw -43vh 2px 1px #fff, 34vw -30vh 3px 1px #fff,
+    -7vw 23vh 3px 3px #fff, 39vw -9vh 1px 3px #fff, -44vw 32vh 2px 1px #fff, 48vw 48vh 1px 2px #fff,
+    -41vw 9vh 2px 2px #fff, 39vw -3vh 0px 2px #fff, -14vw 32vh 1px 1px #fff, 15vw -44vh 2px 0px #fff,
+    -21vw 38vh 3px 3px #fff, -27vw -3vh 3px 0px #fff, 5vw -13vh 3px 1px #fff, -4vw -1vh 2px 3px #fff,
+    49vw 1vh 2px 1px #fff, 3vw -21vh 2px 1px #fff, 39vw -33vh 0px 1px #fff, 17vw 23vh 0px 2px #fff,
+    21vw 50vh 3px 2px #fff, 22vw -20vh 3px 2px #fff, -50vw 0vh 1px 1px #fff, -24vw 44vh 0px 3px #fff,
+    -28vw -4vh 1px 3px #fff, 31vw 29vh 3px 1px #fff, -41vw -4vh 1px 2px #fff, 4vw 37vh 0px 1px #fff,
+    3vw 13vh 3px 3px #fff, 20vw 37vh 2px 3px #fff, 35vw 24vh 3px 0px #fff, -31vw 31vh 0px 2px #fff,
+    -9vw 15vh 1px 3px #fff, 34vw 47vh 3px 2px #fff, 48vw 34vh 1px 3px #fff, 23vw 50vh 2px 3px #fff;
+  -webkit-box-reflect: below 0px linear-gradient(to bottom, rgba (0, 0, 0, 0), rgba(255, 255, 255, 0.557));
+  animation: zoom 90s infinite linear;
+  z-index: 0;
+}
+
+@keyframes zoom {
+  0% {
+    transform: scale(1);
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: scale(1.3);
+    transform: rotate(360deg);
+  }
 }
 
 .App-logo {
@@ -41,20 +93,38 @@
   font-weight: bold;
   font-style: oblique;
   margin: 0%;
+  color: aquamarine;
+  font-size: 20px;
+  z-index: 9999;
 }
 
 #apodExplanation {
   margin: 15px;
   border: double rgb(35, 35, 77);
+  background-color: rgb(128, 128, 128);
+  z-index: 9999;
 }
 
 .imgbox {
   display: grid;
   width: 100%;
   height: 95%;
+  z-index: 9999;
 }
 #apodImg {
   margin: auto;
   max-width: 100vh;
   max-height: 80%;
+  z-index: 9999;
+}
+#search {
+  margin: 25px;
+  z-index: 9999;
+}
+form {
+  color: aquamarine;
+  text-align: center;
+  padding: 25px;
+  justify-content: space-between;
+  z-index: 9999;
 }

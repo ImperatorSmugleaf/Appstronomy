@@ -125,7 +125,7 @@ function Search({ setData }) {
       </section>
     </form>
   ) : (
-    <form onSubmit={submit}>
+    <form Id="search" onSubmit={submit}>
       <button type="submit">Search</button>
       <input value={query} onChange={e => setQuery(e.target.value)} />
       <button type="button" onClick={() => setAdvancedSearch(true)}>
