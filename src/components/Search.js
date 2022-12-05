@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 function Search({ setData }) {
-  const [error, setError] = useState(null)
   const [advancedSearch, setAdvancedSearch] = useState(false)
   const [query, setQuery] = useState('')
   const [center, setCenter] = useState('')
@@ -31,7 +30,6 @@ function Search({ setData }) {
   ]
 
   function submit(e) {
-    setError(null)
     e.preventDefault()
     let request
     if (!advancedSearch) {
@@ -59,8 +57,7 @@ function Search({ setData }) {
           response.json().then(setData)
         }
       } else {
-        setError(`Error ${response.status}`)
-        setData(`Something went wrong! ${error}`)
+        setData(`Something went wrong! Error ${response.status}`)
       }
     })
   }
