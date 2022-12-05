@@ -1,7 +1,8 @@
 import './App.css'
 import ApodDisplay from './ApodDisplay'
-import { useState, useEffect } from 'react'
 import Search from './Search'
+import Results from './Results'
+import { useState, useEffect } from 'react'
 
 const apodURL = `https://classproxy.rtoal.repl.co/apod`
 
@@ -26,7 +27,7 @@ function App() {
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />
       <Search setData={setData} />
-      {data ? <img src={data.collection.items[0].links[0].href} /> : ''}
+      <Results data={data} />
     </div>
   )
 }
