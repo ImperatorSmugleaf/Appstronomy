@@ -1,7 +1,6 @@
 import { useState } from 'react'
 
 function Search({ setData }) {
-  const [error, setError] = useState(null)
   const [advancedSearch, setAdvancedSearch] = useState(false)
   const [query, setQuery] = useState('')
   const [center, setCenter] = useState('')
@@ -14,8 +13,6 @@ function Search({ setData }) {
   const [title, setTitle] = useState('')
   const [startYear, setStartYear] = useState('')
   const [endYear, setEndYear] = useState('')
-  const [image, setImage] = useState(true)
-  const [audio, setAudio] = useState(false)
   const searchTerms = [
     ['q', query],
     ['center', center],
@@ -31,12 +28,11 @@ function Search({ setData }) {
   ]
 
   function submit(e) {
-    setError(null)
     e.preventDefault()
     let request
     if (!advancedSearch) {
       if (query) {
-        request = `https://images-api.nasa.gov/search?q=${encodeURIComponent(query)}`
+        request = `https://images-api.nasa.gov/search?q=${encodeURIComponent(query)}&media_type=image`
       }
     } else {
       if (searchTerms.some(term => term[1])) {
@@ -44,11 +40,7 @@ function Search({ setData }) {
           .map(term => (term = term[1] ? `${term[0]}=${encodeURIComponent(term[1])}` : null))
           .filter(term => term)
           .join('&')
-        const mediaType =
-          image || audio ? `media_type=${image ? 'image' : ''}${audio ? `${image ? ',audio' : 'audio'}` : ''}` : null
-        request = `https://images-api.nasa.gov/search?${queryComponents}${
-          queryComponents.length > 0 ? `&${mediaType}` : mediaType
-        }`
+        request = `https://images-api.nasa.gov/search?${queryComponents}&media_type=image`
       }
     }
     fetch(request).then(response => {
@@ -59,8 +51,7 @@ function Search({ setData }) {
           response.json().then(setData)
         }
       } else {
-        setError(`Error ${response.status}`)
-        setData(`Something went wrong! ${error}`)
+        setData(`Something went wrong! Error ${response.status}`)
       }
     })
   }
@@ -112,17 +103,6 @@ function Search({ setData }) {
         End Year
         <input value={endYear} onChange={e => setEndYear(e.target.value)} />
       </label>
-      <section>
-        Search Includes:
-        <label>
-          Images
-          <input type="checkbox" checked={image} onChange={() => setImage(!image)} />
-        </label>
-        <label>
-          Audio
-          <input type="checkbox" checked={audio} onChange={() => setAudio(!audio)} />
-        </label>
-      </section>
     </form>
   ) : (
     <form Id="search" onSubmit={submit}>
