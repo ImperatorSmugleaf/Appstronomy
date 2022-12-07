@@ -32,7 +32,7 @@ function Search({ setData }) {
     let request
     if (!advancedSearch) {
       if (query) {
-        request = `https://images-api.nasa.gov/search?q=${encodeURIComponent(query)}`
+        request = `https://images-api.nasa.gov/search?q=${encodeURIComponent(query)}&media_type=image`
       }
     } else {
       if (searchTerms.some(term => term[1])) {
@@ -40,10 +40,7 @@ function Search({ setData }) {
           .map(term => (term = term[1] ? `${term[0]}=${encodeURIComponent(term[1])}` : null))
           .filter(term => term)
           .join('&')
-        const mediaType = 'media_type=image'
-        request = `https://images-api.nasa.gov/search?${queryComponents}${
-          queryComponents.length > 0 ? `&${mediaType}` : mediaType
-        }`
+        request = `https://images-api.nasa.gov/search?${queryComponents}&media_type=image`
       }
     }
     fetch(request).then(response => {
