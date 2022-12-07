@@ -24,6 +24,14 @@ function App() {
     })
   }, [])
 
+  useEffect(() => {
+    if (modal) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'scroll'
+    }
+  }, [modal])
+
   return (
     <div className="App">
       {modal && <Modal source={modal} setModal={setModal} />}
