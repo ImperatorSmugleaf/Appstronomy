@@ -54,48 +54,22 @@
   }
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-#apodHeader {
+header {
   font-weight: bold;
   font-style: oblique;
   margin: 0%;
-  color: aquamarine;
+  color: rgb(62, 29, 51);
   font-size: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   z-index: 9999;
+  background-color: grey;
+  position: relative;
+}
+
+#login {
+  float: right;
+  align-items: flex-end;
 }
 
 #apodExplanation {
@@ -103,6 +77,7 @@
   border: double rgb(35, 35, 77);
   background-color: rgb(128, 128, 128);
   z-index: 9999;
+  position: relative;
 }
 
 .imgbox {
@@ -110,21 +85,29 @@
   width: 100%;
   height: 95%;
   z-index: 9999;
+  position: relative;
 }
 #apodImg {
   margin: auto;
   max-width: 100vh;
   max-height: 80%;
   z-index: 9999;
+  position: relative;
 }
 #search {
   margin: 25px;
   z-index: 9999;
+  position: relative;
+  width: 400px;
+  text-align: center;
 }
 form {
   color: aquamarine;
   text-align: center;
   padding: 25px;
-  justify-content: space-between;
+  justify-content: center;
   z-index: 9999;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }

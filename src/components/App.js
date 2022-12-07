@@ -23,6 +23,10 @@ function App() {
 
   return (
     <div className="App">
+      <header>
+        Astronomy Picture of the day
+        <button id="Login"> Placeholder </button>
+      </header>
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />
       <Search setData={setData} />
