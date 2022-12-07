@@ -60,7 +60,17 @@ header {
   margin: 0%;
   color: rgb(62, 29, 51);
   font-size: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   z-index: 9999;
+  background-color: grey;
+  position: relative;
+}
+
+#login {
+  float: right;
+  align-items: flex-end;
+  display: flex;
 }
 
 #apodExplanation {
@@ -68,6 +78,7 @@ header {
   border: double rgb(35, 35, 77);
   background-color: rgb(128, 128, 128);
   z-index: 9999;
+  position: relative;
 }
 
 .imgbox {
@@ -75,16 +86,21 @@ header {
   width: 100%;
   height: 95%;
   z-index: 9999;
+  position: relative;
 }
 #apodImg {
   margin: auto;
   max-width: 100vh;
   max-height: 80%;
   z-index: 9999;
+  position: relative;
 }
 #search {
   margin: 25px;
   z-index: 9999;
+  position: relative;
+  text-align: center;
+  flex-direction: row;
 }
 form {
   color: rgb(62, 29, 51);
@@ -92,24 +108,10 @@ form {
   text-align: center;
   padding: 25px;
   justify-content: center;
-  z-index: 1;
+  z-index: 9999;
   position: relative;
   display: flex;
   flex-direction: column;
-}
-
-#modalBg {
-  background-color: rgba(0, 0, 0, 0.5);
-  position: -webkit-sticky;
-  position: sticky;
-  top: 0;
-  padding-top: 1%;
-  width: 100vw;
-  height: 100vh;
-  z-index: 2;
-  margin: 0;
-  color: white;
-  text-shadow: -1px, 1px, 0, black, 1px, 1px, 0, black, 1px, -1px, 0, black, -1px, -1px, 0, black;
 }
 
 #advanceSearchButton {
@@ -122,4 +124,18 @@ form {
 
 #advanceSearch {
   background-color: rgba(122, 118, 118, 0.744);
+}
+
+#modalBg {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding-top: 1%;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99999;
+  margin: 0;
+  color: white;
+  text-shadow: -1px, 1px, 0, black, 1px, 1px, 0, black, 1px, -1px, 0, black, -1px, -1px, 0, black;
 }
