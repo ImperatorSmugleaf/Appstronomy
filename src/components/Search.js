@@ -13,8 +13,6 @@ function Search({ setData }) {
   const [title, setTitle] = useState('')
   const [startYear, setStartYear] = useState('')
   const [endYear, setEndYear] = useState('')
-  const [image, setImage] = useState(true)
-  const [audio, setAudio] = useState(false)
   const searchTerms = [
     ['q', query],
     ['center', center],
@@ -42,8 +40,7 @@ function Search({ setData }) {
           .map(term => (term = term[1] ? `${term[0]}=${encodeURIComponent(term[1])}` : null))
           .filter(term => term)
           .join('&')
-        const mediaType =
-          image || audio ? `media_type=${image ? 'image' : ''}${audio ? `${image ? ',audio' : 'audio'}` : ''}` : null
+        const mediaType = 'media_type=image'
         request = `https://images-api.nasa.gov/search?${queryComponents}${
           queryComponents.length > 0 ? `&${mediaType}` : mediaType
         }`
@@ -109,17 +106,6 @@ function Search({ setData }) {
         End Year
         <input value={endYear} onChange={e => setEndYear(e.target.value)} />
       </label>
-      <section>
-        Search Includes:
-        <label>
-          Images
-          <input type="checkbox" checked={image} onChange={() => setImage(!image)} />
-        </label>
-        <label>
-          Audio
-          <input type="checkbox" checked={audio} onChange={() => setAudio(!audio)} />
-        </label>
-      </section>
     </form>
   ) : (
     <form Id="search" onSubmit={submit}>
