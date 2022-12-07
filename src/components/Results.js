@@ -15,7 +15,7 @@ function Results({ data, setModal }) {
       data.collection.items.slice(currentResults, currentResults + resultsPerPage).map(searchResult => (
         <figure onClick={() => setModal(searchResult)}>
           <figcaption>{searchResult.data[0].title}</figcaption>
-          <img src={searchResult.links[0].href} className="imagePreview" />
+          <img src={searchResult.links[0].href} className="thumbnail" />
         </figure>
       ))
     ) : (
