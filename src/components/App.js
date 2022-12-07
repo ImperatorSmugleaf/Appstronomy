@@ -2,6 +2,7 @@ import './App.css'
 import ApodDisplay from './ApodDisplay'
 import Search from './Search'
 import Results from './Results'
+import Modal from './Modal'
 import { useState, useEffect } from 'react'
 
 const apodURL = `https://classproxy.rtoal.repl.co/apod`
@@ -26,6 +27,7 @@ function App() {
   return (
     <div className="App">
       <div className="Stars"></div>
+      {modal && <Modal source={modal} setModal={setModal} />}
       <ApodDisplay apod={apod} />
       <Search setData={setData} />
       <Results data={data} setModal={setModal} />
