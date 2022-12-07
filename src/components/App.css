@@ -55,7 +55,7 @@
 }
 
 header {
-  font-weight: bold;
+  font-weight: bolder;
   font-style: oblique;
   margin: 0%;
   color: rgb(62, 29, 51);
@@ -70,6 +70,7 @@ header {
 #login {
   float: right;
   align-items: flex-end;
+  display: flex;
 }
 
 #apodExplanation {
@@ -98,11 +99,12 @@ header {
   margin: 25px;
   z-index: 9999;
   position: relative;
-  width: 400px;
   text-align: center;
+  flex-direction: row;
 }
 form {
-  color: aquamarine;
+  color: rgb(62, 29, 51);
+  font-weight: bold;
   text-align: center;
   padding: 25px;
   justify-content: center;
@@ -110,4 +112,16 @@ form {
   position: relative;
   display: flex;
   flex-direction: column;
+}
+
+#advanceSearchButton {
+  text-align: center;
+  position: relative;
+  justify-content: center;
+  width: 150px;
+  margin: 0 auto;
+}
+
+#advanceSearch {
+  background-color: rgba(122, 118, 118, 0.744);
 }
