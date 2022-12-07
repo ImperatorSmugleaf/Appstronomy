@@ -26,6 +26,10 @@ function App() {
 
   return (
     <div className="App">
+      <header>
+        Astronomy Picture of the day
+        <button id="Login"> Placeholder </button>
+      </header>
       <div className="Stars"></div>
       {modal && <Modal source={modal} setModal={setModal} />}
       <ApodDisplay apod={apod} />

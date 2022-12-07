@@ -54,79 +54,48 @@
   }
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-#apodHeader {
-  font-weight: bold;
+header {
+  font-weight: bolder;
   font-style: oblique;
   margin: 0%;
-  color: aquamarine;
+  color: rgb(62, 29, 51);
   font-size: 20px;
-  z-index: 1;
+  z-index: 9999;
 }
 
 #apodExplanation {
   margin: 15px;
   border: double rgb(35, 35, 77);
   background-color: rgb(128, 128, 128);
-  z-index: 1;
+  z-index: 9999;
 }
 
 .imgbox {
   display: grid;
   width: 100%;
   height: 95%;
-  z-index: 1;
+  z-index: 9999;
 }
 #apodImg {
   margin: auto;
   max-width: 100vh;
   max-height: 80%;
-  z-index: 1;
+  z-index: 9999;
 }
 #search {
   margin: 25px;
-  z-index: 1;
+  z-index: 9999;
 }
 form {
-  color: aquamarine;
+  color: rgb(62, 29, 51);
+  font-weight: bold;
   text-align: center;
   padding: 25px;
-  justify-content: space-between;
+  justify-content: center;
   z-index: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 #modalBg {
@@ -141,4 +110,16 @@ form {
   margin: 0;
   color: white;
   text-shadow: -1px, 1px, 0, black, 1px, 1px, 0, black, 1px, -1px, 0, black, -1px, -1px, 0, black;
+}
+
+#advanceSearchButton {
+  text-align: center;
+  position: relative;
+  justify-content: center;
+  width: 150px;
+  margin: 0 auto;
+}
+
+#advanceSearch {
+  background-color: rgba(122, 118, 118, 0.744);
 }

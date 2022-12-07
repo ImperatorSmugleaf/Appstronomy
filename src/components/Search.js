@@ -57,8 +57,10 @@ function Search({ setData }) {
   }
 
   return advancedSearch ? (
-    <form onSubmit={submit}>
-      <button type="submit">Search</button>
+    <form id="advanceSearch" onSubmit={submit}>
+      <button id="advanceSearchButton" type="submit">
+        Search
+      </button>
       <label>
         All Text
         <input value={query} onChange={e => setQuery(e.target.value)} />
