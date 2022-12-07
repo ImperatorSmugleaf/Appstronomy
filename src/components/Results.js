@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Results({ data }) {
+function Results({ data, setModal }) {
   const [resultsPerPage, setResultsPerPage] = useState(20)
   const [currentResults, setCurrentResults] = useState(0)
 
@@ -12,9 +12,12 @@ function Results({ data }) {
 
   return data?.collection ? (
     data?.collection?.items.length > 0 ? (
-      data.collection.items
-        .slice(currentResults, currentResults + resultsPerPage)
-        .map(searchResult => <p>Not implemented yet!</p>)
+      data.collection.items.slice(currentResults, currentResults + resultsPerPage).map(searchResult => (
+        <figure onClick={() => setModal(searchResult)}>
+          <figcaption>{searchResult.data[0].title}</figcaption>
+          <img src={searchResult.links[0].href} className="imagePreview" />
+        </figure>
+      ))
     ) : (
       <p>No results found!</p>
     )
