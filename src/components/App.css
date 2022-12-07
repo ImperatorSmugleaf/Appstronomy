@@ -95,36 +95,50 @@
   margin: 0%;
   color: aquamarine;
   font-size: 20px;
-  z-index: 9999;
+  z-index: 1;
 }
 
 #apodExplanation {
   margin: 15px;
   border: double rgb(35, 35, 77);
   background-color: rgb(128, 128, 128);
-  z-index: 9999;
+  z-index: 1;
 }
 
 .imgbox {
   display: grid;
   width: 100%;
   height: 95%;
-  z-index: 9999;
+  z-index: 1;
 }
 #apodImg {
   margin: auto;
   max-width: 100vh;
   max-height: 80%;
-  z-index: 9999;
+  z-index: 1;
 }
 #search {
   margin: 25px;
-  z-index: 9999;
+  z-index: 1;
 }
 form {
   color: aquamarine;
   text-align: center;
   padding: 25px;
   justify-content: space-between;
-  z-index: 9999;
+  z-index: 1;
+}
+
+#modalBg {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  padding-top: 1%;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2;
+  margin: 0;
+  color: white;
+  text-shadow: -1px, 1px, 0, black, 1px, 1px, 0, black, 1px, -1px, 0, black, -1px, -1px, 0, black;
 }
