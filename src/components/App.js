@@ -11,6 +11,7 @@ function App() {
 
   const [apod, setApod] = useState(null)
   const [data, setData] = useState(null)
+  const [modal, setModal] = useState(null)
 
   useEffect(() => {
     fetch(apodURL).then(response => {
@@ -27,7 +28,7 @@ function App() {
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />
       <Search setData={setData} />
-      <Results data={data} />
+      <Results data={data} setModal={setModal} />
     </div>
   )
 }
