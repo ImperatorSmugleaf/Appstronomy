@@ -12,7 +12,7 @@ function App() {
 
   const [apod, setApod] = useState(null)
   const [data, setData] = useState(null)
-  const [modal, setModal] = useState(null)
+  const [pick, setPick] = useState(null)
 
   useEffect(() => {
     fetch(apodURL).then(response => {
@@ -25,16 +25,16 @@ function App() {
   }, [])
 
   useEffect(() => {
-    if (modal) {
+    if (pick) {
       document.body.style.overflow = 'hidden'
     } else {
       document.body.style.overflow = 'scroll'
     }
-  }, [modal])
+  }, [pick])
 
   return (
     <div className="App">
-      {modal && <Modal source={modal} setModal={setModal} />}
+      {pick && <Modal pick={pick} setPick={setPick} />}
       <header>
         Astronomy Picture of the day
         <button id="Login"> Placeholder </button>
@@ -42,7 +42,7 @@ function App() {
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />
       <Search setData={setData} />
-      <Results data={data} setModal={setModal} />
+      <Results data={data} setModal={setPick} />
     </div>
   )
 }
