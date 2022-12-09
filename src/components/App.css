@@ -136,8 +136,19 @@ form {
   height: 100vh;
   z-index: 99999;
   margin: 0;
+}
+
+#modalContent {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  width: auto;
+  height: auto;
+  padding-top: 1%;
+  margin: 0;
   color: white;
   text-shadow: -1px, 1px, 0, black, 1px, 1px, 0, black, 1px, -1px, 0, black, -1px, -1px, 0, black;
+  z-index: 100000;
 }
 
 #modalImg {
