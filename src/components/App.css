@@ -67,6 +67,11 @@ header {
   position: relative;
 }
 
+button {
+  position: absolute;
+  right: 0;
+}
+
 #login {
   float: right;
   align-items: flex-end;
@@ -75,7 +80,7 @@ header {
 
 #apodExplanation {
   margin: 15px;
-  border: double rgb(35, 35, 77);
+  border: double rgb(74, 74, 92);
   background-color: rgb(128, 128, 128);
   z-index: 9999;
   position: relative;
