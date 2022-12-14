@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Search({ setNasaData, setNextPage }) {
+function Search({ setSearchResults, setNextPage }) {
   const [advancedSearch, setAdvancedSearch] = useState(false)
   const [query, setQuery] = useState('')
   const [center, setCenter] = useState('')
@@ -46,16 +46,16 @@ function Search({ setNasaData, setNextPage }) {
     fetch(request).then(response => {
       if (response.status >= 200 && response.status < 400) {
         if (response?.reason) {
-          setNasaData(`Search failed! ${response.reason}`)
+          setSearchResults(`Search failed! ${response.reason}`)
           setNextPage(null)
         } else {
           response.json().then(fulfilledRequest => {
-            setNasaData(fulfilledRequest.collection.items)
+            setSearchResults(fulfilledRequest.collection.items)
             setNextPage(fulfilledRequest.collection.links[fulfilledRequest.collection.links.length - 1]?.href)
           })
         }
       } else {
-        setNasaData(`Something went wrong! Error ${response.status}`)
+        setSearchResults(`Something went wrong! Error ${response.status}`)
         setNextPage(null)
       }
     })
