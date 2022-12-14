@@ -23,11 +23,11 @@ export function SignIn() {
   )
 }
 
-export function SignOut() {
+export function SignOut({ setViewingFavorites }) {
   return (
     <div style={{ paddingTop: '15px' }}>
       Hello, {auth.currentUser.displayName} &nbsp;
-      <button style={{ marginRight: '150px', marginBottom: '30px' }} onClick={() => '../components/Favorite'}>
+      <button style={{ marginRight: '150px', marginBottom: '30px' }} onClick={() => setViewingFavorites(true)}>
         Favorites
       </button>
       <button style={{ marginRight: '15px', marginBottom: '30px' }} onClick={() => signOut(auth)}>

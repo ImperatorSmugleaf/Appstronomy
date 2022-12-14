@@ -5,6 +5,7 @@ import Results from './Results'
 import Modal from './Modal'
 import { useState, useEffect } from 'react'
 import { checkUser, SignIn, SignOut, useAuthentication } from '../services/authService'
+import { Favorite } from './Favorite'
 
 const apodURL = `https://classproxy.rtoal.repl.co/apod`
 const MAX_RESULTS_FROM_API = 100
@@ -20,6 +21,7 @@ function App() {
   const [currentResult, setCurrentResult] = useState(0)
   const [nextPage, setNextPage] = useState(null)
   const [resultsInputContent, setResultsInputContent] = useState(resultsPerPage)
+  const [viewingFavorites, setViewingFavorites] = useState(false)
 
   useEffect(() => {
     fetch(apodURL).then(response => {
@@ -81,49 +83,57 @@ function App() {
 
   return (
     <div className="App">
-      {pick && <Modal pick={pick} setPick={setPick} user={user} />}
-      <header>Astronomy Picture of the day {!user ? <SignIn /> : <SignOut />}</header>
-      <div className="Stars"></div>
-      <ApodDisplay apod={apod} />
-      <Search
-        setSearchResults={setSearchResults}
-        setNextPage={setNextPage}
-        setCurrentPageNumber={setCurrentPageNumber}
-      />
-      <label>
-        <span className="text">Results per Page:</span>{' '}
-        <input
-          value={resultsInputContent}
-          onChange={e => setResultsInputContent(e.target.value.replace(/\D/, ''))}
-          onBlur={() => {
-            setResultsPerPage(clampResultsPerPage(resultsInputContent))
-          }}
-        ></input>
-      </label>
-      <br />
-      <button
-        disabled={currentPageNumber === 0}
-        onClick={() => {
-          setCurrentPageNumber(currentPageNumber - 1)
-        }}
-      >
-        Previous Page
-      </button>
-      <button
-        disabled={!nextPage}
-        onClick={() => {
-          setCurrentPageNumber(currentPageNumber + 1)
-        }}
-      >
-        Next Page
-      </button>
-      <Results
-        searchResults={searchResults}
-        setModal={setPick}
-        currentResult={currentResult}
-        currentPageNumber={currentPageNumber}
-        resultsPerPage={resultsPerPage}
-      />
+      {viewingFavorites ? (
+        <Favorite />
+      ) : (
+        <div>
+          {pick && <Modal pick={pick} setPick={setPick} user={user} />}
+          <header>
+            Astronomy Picture of the day {!user ? <SignIn /> : <SignOut setViewingFavorites={setViewingFavorites} />}
+          </header>
+          <div className="Stars"></div>
+          <ApodDisplay apod={apod} />
+          <Search
+            setSearchResults={setSearchResults}
+            setNextPage={setNextPage}
+            setCurrentPageNumber={setCurrentPageNumber}
+          />
+          <label>
+            <span className="text">Results per Page:</span>{' '}
+            <input
+              value={resultsInputContent}
+              onChange={e => setResultsInputContent(e.target.value.replace(/\D/, ''))}
+              onBlur={() => {
+                setResultsPerPage(clampResultsPerPage(resultsInputContent))
+              }}
+            ></input>
+          </label>
+          <br />
+          <button
+            disabled={currentPageNumber === 0}
+            onClick={() => {
+              setCurrentPageNumber(currentPageNumber - 1)
+            }}
+          >
+            Previous Page
+          </button>
+          <button
+            disabled={!nextPage}
+            onClick={() => {
+              setCurrentPageNumber(currentPageNumber + 1)
+            }}
+          >
+            Next Page
+          </button>
+          <Results
+            searchResults={searchResults}
+            setModal={setPick}
+            currentResult={currentResult}
+            currentPageNumber={currentPageNumber}
+            resultsPerPage={resultsPerPage}
+          />
+        </div>
+      )}
     </div>
   )
 }
