@@ -69,7 +69,10 @@ function App() {
       {pick && <Modal pick={pick} setPick={setPick} />}
       <header>
         Astronomy Picture of the day
-        <button id="Login"> Placeholder </button>
+        <button id="Login" className="bigButton">
+          {' '}
+          Placeholder{' '}
+        </button>
       </header>
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />
@@ -84,6 +87,9 @@ function App() {
           }}
         ></input>
       </label>
+      <br />
+      <button disabled={currentPageNumber === 1}>Previous Page</button>
+      <button disabled={!nextPage}>Next Page</button>
       <Results
         searchResults={searchResults}
         setModal={setPick}

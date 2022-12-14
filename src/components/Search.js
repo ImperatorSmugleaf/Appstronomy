@@ -63,7 +63,7 @@ function Search({ setNasaData, setNextPage }) {
 
   return advancedSearch ? (
     <form id="advanceSearch" onSubmit={submit}>
-      <button id="advanceSearchButton" type="submit">
+      <button id="advanceSearchButton" className="bigButton" type="submit">
         Search{' '}
       </button>
       <label>
@@ -101,13 +101,15 @@ function Search({ setNasaData, setNextPage }) {
       </label>
     </form>
   ) : (
-    <form Id="search" onSubmit={submit}>
-      <button type="submit">Search</button>
+    <form id="search" onSubmit={submit}>
+      <button type="submit" className="bigButton">
+        Search
+      </button>
       <label>
         <span className="text">Search: </span>
         <input value={query} onChange={e => setQuery(e.target.value)} />
       </label>
-      <button type="button" onClick={() => setAdvancedSearch(true)}>
+      <button type="button" className="bigButton" onClick={() => setAdvancedSearch(true)}>
         Advanced Search
       </button>
     </form>
