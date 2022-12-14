@@ -2,15 +2,14 @@ function Modal({ pick, setPick }) {
   return (
     <>
       <div id="modalBg" onClick={() => setPick(null)} />
-      <main id="modalContent" className="text">
+      <main id="modalContent">
         <figure>
-          <figcaption id="modalTitle">
-            <button onClick={() => setPick(null)}>Close</button>
-            {pick.data[0].title}
+          <figcaption>
+            <span className="text">{pick.data[0].title}</span> <button onClick={() => setPick(null)}>Close</button>
           </figcaption>
           <img src={pick.links[0].href} id="modalImg" />
         </figure>
-        <section>
+        <section className="text">
           <p>
             <b>Description:</b> {pick.data[0].description}
           </p>
