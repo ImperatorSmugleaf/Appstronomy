@@ -4,7 +4,10 @@ function Modal({ pick, setPick }) {
       <div id="modalBg" onClick={() => setPick(null)} />
       <main id="modalContent">
         <figure>
-          <figcaption>{pick.data[0].title}</figcaption> <button onClick={() => setPick(null)}>Close</button>
+          <figcaption>
+            {pick.data[0].title} <button onClick={() => setPick(null)}>Close</button>
+          </figcaption>
+
           <img src={pick.links[0].href} id="modalImg" />
         </figure>
         <section>
