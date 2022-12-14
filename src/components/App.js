@@ -41,10 +41,18 @@ function App() {
     if (searchResults.length <= (currentPageNumber + 1) * resultsPerPage && nextPage) {
       fetch(nextPage).then(response => {
         if (response.status >= 200 && response.status < 400) {
-          response.json().then(fulfilledRequest => {
-            searchResults.concat(fulfilledRequest.collection.items)
-            setNextPage(fulfilledRequest.collection.links[fulfilledRequest.collection.links.length - 1]?.href)
-          })
+          if (response?.reason) {
+            setSearchResults(`Search failed! ${response.reason}`)
+            setNextPage(null)
+          } else {
+            response.json().then(fulfilledRequest => {
+              setSearchResults(searchResults.concat(fulfilledRequest.collection.items))
+              setNextPage(fulfilledRequest.collection.links[fulfilledRequest.collection.links.length - 1]?.href)
+            })
+          }
+        } else {
+          setSearchResults(`Something went wrong! Error ${response.status}`)
+          setNextPage(null)
         }
       })
     }
@@ -75,7 +83,7 @@ function App() {
       </header>
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />
-      <Search setNasaData={setSearchResults} setNextPage={setNextPage} />
+      <Search setSearchResults={setSearchResults} setNextPage={setNextPage} />
       <label>
         <span className="text">Results per Page:</span>{' '}
         <input
