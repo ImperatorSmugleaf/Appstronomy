@@ -38,7 +38,7 @@ function App() {
       {pick && <Modal pick={pick} setPick={setPick} />}
       <header>
         Astronomy Picture of the day
-        {!user ? <SignIn /> : <SignOut />}
+        <button id="Login"> Placeholder </button>
       </header>
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />
