@@ -4,10 +4,10 @@ function Modal({ pick, setPick }) {
       <div id="modalBg" onClick={() => setPick(null)} />
       <main id="modalContent" className="text">
         <figure>
-          <figcaption>
-            {pick.data[0].title} <button onClick={() => setPick(null)}>Close</button>
+          <figcaption id="modalTitle">
+            <button onClick={() => setPick(null)}>Close</button>
+            {pick.data[0].title}
           </figcaption>
-
           <img src={pick.links[0].href} id="modalImg" />
         </figure>
         <section>
