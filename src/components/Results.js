@@ -10,8 +10,8 @@ function Results({ searchResults, setModal, currentResult, resultsPerPage }) {
   return searchResults ? (
     searchResults?.length > 0 ? (
       searchResults.slice(currentResult, currentResult + resultsPerPage).map(searchResult => (
-        <figure>
-          <figcaption>{searchResult.data[0].title}</figcaption>
+        <figure className="imgBox">
+          <figcaption className="text">{searchResult.data[0].title}</figcaption>
           <img src={searchResult.links[0].href} onClick={() => setModal(searchResult)} className="thumbnail" />
         </figure>
       ))
