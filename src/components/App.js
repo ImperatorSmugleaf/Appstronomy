@@ -15,8 +15,7 @@ function App() {
   const [searchResults, setSearchResults] = useState('')
   const [pick, setPick] = useState(null)
   const [resultsPerPage, setResultsPerPage] = useState(20)
-  const [currentResults, setCurrentResults] = useState(0)
-  const [currentPageNumber, setCurrentPageNumber] = useState(1)
+  const [currentPageNumber, setCurrentPageNumber] = useState(0)
   const [nextPage, setNextPage] = useState(null)
   const [resultsInputContent, setResultsInputContent] = useState(resultsPerPage)
 
@@ -39,7 +38,7 @@ function App() {
   }, [pick])
 
   useEffect(() => {
-    if (searchResults.length <= currentPageNumber * resultsPerPage && nextPage) {
+    if (searchResults.length <= (currentPageNumber + 1) * resultsPerPage && nextPage) {
       fetch(nextPage).then(response => {
         if (response.status >= 200 && response.status < 400) {
           response.json().then(fulfilledRequest => {
@@ -88,13 +87,27 @@ function App() {
         ></input>
       </label>
       <br />
-      <button disabled={currentPageNumber === 1}>Previous Page</button>
-      <button disabled={!nextPage}>Next Page</button>
+      <button
+        disabled={currentPageNumber === 0}
+        onClick={() => {
+          setCurrentPageNumber(currentPageNumber - 1)
+        }}
+      >
+        Previous Page
+      </button>
+      <button
+        disabled={!nextPage}
+        onClick={() => {
+          setCurrentPageNumber(currentPageNumber + 1)
+        }}
+      >
+        Next Page
+      </button>
       <Results
         searchResults={searchResults}
         setModal={setPick}
         resultsPerPage={resultsPerPage}
-        currentResults={currentResults}
+        currentPageNumber={currentPageNumber}
       />
     </div>
   )
