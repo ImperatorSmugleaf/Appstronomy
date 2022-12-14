@@ -81,7 +81,7 @@ function App() {
 
   return (
     <div className="App">
-      {pick && <Modal pick={pick} setPick={setPick} />}
+      {pick && <Modal pick={pick} setPick={setPick} user={user} />}
       <header>Astronomy Picture of the day {!user ? <SignIn /> : <SignOut />}</header>
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />

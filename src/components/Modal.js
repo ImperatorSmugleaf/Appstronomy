@@ -1,11 +1,23 @@
-function Modal({ pick, setPick }) {
+import { addFavorite } from '../services/dbService'
+
+function Modal({ pick, setPick, user }) {
   return (
     <>
       <div id="modalBg" onClick={() => setPick(null)} />
       <main id="modalContent">
         <figure>
           <figcaption>
-            <span className="text">{pick.data[0].title}</span> <button onClick={() => setPick(null)}>Close</button>
+            <span className="text">{pick.data[0].title}</span>{' '}
+            {user && (
+              <button
+                onClick={async () => {
+                  await addFavorite({ UserID: user.uid, NasaID: pick.data[0].nasa_id })
+                }}
+              >
+                Favorite
+              </button>
+            )}{' '}
+            <button onClick={() => setPick(null)}>Close</button>
           </figcaption>
           <img src={pick.links[0].href} id="modalImg" />
         </figure>
