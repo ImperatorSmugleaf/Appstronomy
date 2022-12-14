@@ -9,7 +9,8 @@ import App from '../components/App'
 export function SignIn() {
   return (
     <button
-      style={{ marginRight: '15px' }}
+      id="loginButton"
+      className="bigButton"
       onClick={() =>
         signInWithPopup(auth, new GoogleAuthProvider()).then(result => {
           // The signed-in user info.
