@@ -4,7 +4,7 @@ import Search from './Search'
 import Results from './Results'
 import Modal from './Modal'
 import { useState, useEffect } from 'react'
-import { SignIn, SignOut, useAuthentication } from '../services/authService'
+import { checkUser, SignIn, SignOut, useAuthentication } from '../services/authService'
 
 const apodURL = `https://classproxy.rtoal.repl.co/apod`
 
