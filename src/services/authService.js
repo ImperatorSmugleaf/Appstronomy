@@ -7,7 +7,8 @@ import { db } from '../firebaseConfig'
 export function SignIn() {
   return (
     <button
-      style={{ marginRight: '15px' }}
+      id="loginButton"
+      className="bigButton"
       onClick={() =>
         signInWithPopup(auth, new GoogleAuthProvider()).then(result => {
           // The signed-in user info.
