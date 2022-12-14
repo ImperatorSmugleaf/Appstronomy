@@ -55,17 +55,32 @@
 }
 
 header {
-  font-weight: bolder;
-  font-style: oblique;
+  font-family: 'Roboto', sans-serif; /* use a modern sans-serif font */
+  font-size: 32px; /* increase font size for better readability */
+  font-weight: bold; /* make text bold */
+  color: #ffc107; /* use a vibrant yellow color */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4); /* add a subtle drop shadow */
+  background: linear-gradient(to bottom, #333, #111); background-image: url('stars.png'); /* add a gradient background */
+  padding: 15px;
+  border: 2px solid #ffc107; /* add a yellow border */
   margin: 0%;
-  color: rgb(62, 29, 51);
-  font-size: 20px;
-  padding-top: 20px;
-  padding-bottom: 20px;
   z-index: 9999;
-  background-color: grey;
   position: relative;
+  font-family: 'Galactic', sans-serif; /* use a sci-fi themed font */
+  animation: twinkle 5s linear infinite; /* animate the stars to twinkle */
 }
+
+@keyframes twinkle {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 200px 200px;
+  }
+}
+
+
+
 
 button {
   position: absolute;
