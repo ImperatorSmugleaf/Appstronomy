@@ -17,6 +17,7 @@ function App() {
   const [pick, setPick] = useState(null)
   const [resultsPerPage, setResultsPerPage] = useState(20)
   const [currentPageNumber, setCurrentPageNumber] = useState(0)
+  const [currentResult, setCurrentResult] = useState(0)
   const [nextPage, setNextPage] = useState(null)
   const [resultsInputContent, setResultsInputContent] = useState(resultsPerPage)
 
@@ -60,6 +61,10 @@ function App() {
       })
     }
   }, [currentPageNumber, resultsPerPage, nextPage])
+
+  useEffect(() => {
+    setCurrentResult(currentPageNumber * resultsPerPage)
+  }, [currentPageNumber])
 
   const clampResultsPerPage = results => {
     let clampedResult
@@ -121,8 +126,9 @@ function App() {
       <Results
         searchResults={searchResults}
         setModal={setPick}
-        resultsPerPage={resultsPerPage}
+        currentResult={currentResult}
         currentPageNumber={currentPageNumber}
+        resultsPerPage={resultsPerPage}
       />
     </div>
   )
