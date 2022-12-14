@@ -86,7 +86,7 @@ header {
   }
 }
 
-button {
+.bigButton {
   font-family: 'Galactic', sans-serif; /* use the sci-fi themed font */
   font-size: 18px; /* increase the font size for better readability */
   color: #ffc107; /* use the vibrant yellow color from the header */
@@ -103,7 +103,7 @@ button {
 }
 
 /* when the button is hovered over, change the background color to a darker shade of yellow */
-button:hover {
+.bigButton:hover {
   background: linear-gradient(to bottom, #b58900, #6b6b00);
 }
 
