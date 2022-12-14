@@ -47,8 +47,10 @@ function App() {
             setNextPage(null)
           } else {
             response.json().then(fulfilledRequest => {
-              setSearchResults(searchResults.concat(fulfilledRequest.collection.items))
-              setNextPage(fulfilledRequest.collection.links[fulfilledRequest.collection.links.length - 1]?.href)
+              setSearchResults(
+                fulfilledRequest?.collection?.items ? searchResults.concat(fulfilledRequest?.collection?.items) : null
+              )
+              setNextPage(fulfilledRequest?.collection?.links[fulfilledRequest?.collection?.links?.length - 1]?.href)
             })
           }
         } else {
@@ -57,7 +59,7 @@ function App() {
         }
       })
     }
-  }, [currentPageNumber, resultsPerPage])
+  }, [currentPageNumber, resultsPerPage, nextPage])
 
   const clampResultsPerPage = results => {
     let clampedResult

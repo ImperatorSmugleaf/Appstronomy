@@ -50,9 +50,9 @@ function Search({ setSearchResults, setNextPage, setCurrentPageNumber }) {
           setNextPage(null)
         } else {
           response.json().then(fulfilledRequest => {
+            setSearchResults(fulfilledRequest?.collection?.items)
+            setNextPage(fulfilledRequest?.collection?.links[fulfilledRequest?.collection?.links?.length - 1]?.href)
             setCurrentPageNumber(0)
-            setSearchResults(fulfilledRequest.collection.items)
-            setNextPage(fulfilledRequest.collection.links[fulfilledRequest.collection.links.length - 1]?.href)
           })
         }
       } else {
