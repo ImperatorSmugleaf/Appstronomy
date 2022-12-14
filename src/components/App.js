@@ -4,11 +4,12 @@ import Search from './Search'
 import Results from './Results'
 import Modal from './Modal'
 import { useState, useEffect } from 'react'
+import { SignIn, SignOut, useAuthentication } from '../services/authService'
 
 const apodURL = `https://classproxy.rtoal.repl.co/apod`
 
 function App() {
-  // const user = useAuthentication();
+  const user = useAuthentication()
 
   const [apod, setApod] = useState(null)
   const [data, setData] = useState(null)
@@ -37,7 +38,7 @@ function App() {
       {pick && <Modal pick={pick} setPick={setPick} />}
       <header>
         Astronomy Picture of the day
-        <button id="Login"> Placeholder </button>
+        {!user ? <SignIn /> : <SignOut />}
       </header>
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />

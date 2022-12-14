@@ -58,12 +58,12 @@ header {
   font-weight: bolder;
   font-style: oblique;
   margin: 0%;
-  color: rgb(62, 29, 51);
+  color: rgb(22, 31, 163);
   font-size: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
   z-index: 9999;
-  background-color: grey;
+  background-color: rgb(128, 128, 128);
   position: relative;
 }
 
