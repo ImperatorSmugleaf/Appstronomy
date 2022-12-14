@@ -12,8 +12,7 @@ function App() {
   const user = useAuthentication()
 
   const [apod, setApod] = useState(null)
-  const [searchResults, setSearchResults] = useState(null)
-  const [nasaData, setNasaData] = useState([])
+  const [searchResults, setSearchResults] = useState([])
   const [pick, setPick] = useState(null)
   const [resultsPerPage, setResultsPerPage] = useState(20)
   const [currentResults, setCurrentResults] = useState(0)
@@ -40,11 +39,11 @@ function App() {
   }, [pick])
 
   useEffect(() => {
-    if (nasaData.length <= currentPageNumber * resultsPerPage && nextPage) {
+    if (searchResults.length <= currentPageNumber * resultsPerPage && nextPage) {
       fetch(nextPage).then(response => {
         if (response.status >= 200 && response.status < 400) {
           response.json().then(fulfilledRequest => {
-            nasaData.concat(fulfilledRequest.collection.items)
+            searchResults.concat(fulfilledRequest.collection.items)
             setNextPage(fulfilledRequest.collection.links[-1])
           })
         }
@@ -74,7 +73,7 @@ function App() {
       </header>
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />
-      <Search setSearchResults={setSearchResults} />
+      <Search setNasaData={setSearchResults} setNextPage={setNextPage} />
       <label>
         <span className="text">Results per Page:</span>{' '}
         <input
