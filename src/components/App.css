@@ -208,5 +208,5 @@ form {
 
 .text {
   color: white;
-  text-shadow: -1px, 1px, 0, black, 1px, 1px, 0, black, 1px, -1px, 0, black, -1px, -1px, 0, black;
+  text-shadow: -4px, 4px, 0, black, 4px, 4px, 0, black, 4px, -4px, 0, black, -4px, -4px, 0, black;
 }
