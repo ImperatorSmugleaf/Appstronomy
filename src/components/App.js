@@ -13,9 +13,13 @@ function App() {
 
   const [apod, setApod] = useState(null)
   const [searchResults, setSearchResults] = useState(null)
+  const [nasaData, setNasaData] = useState([])
   const [pick, setPick] = useState(null)
   const [resultsPerPage, setResultsPerPage] = useState(20)
   const [currentResults, setCurrentResults] = useState(0)
+  const [currentPageNumber, setCurrentPageNumber] = useState(1)
+  const [nextPage, setNextPage] = useState(null)
+  const [resultsInputContent, setResultsInputContent] = useState(resultsPerPage)
 
   useEffect(() => {
     fetch(apodURL).then(response => {
@@ -35,7 +39,31 @@ function App() {
     }
   }, [pick])
 
-  useEffect(() => {})
+  useEffect(() => {
+    if (nasaData.length <= currentPageNumber * resultsPerPage && nextPage) {
+      fetch(nextPage).then(response => {
+        if (response.status >= 200 && response.status < 400) {
+          response.json().then(fulfilledRequest => {
+            nasaData.concat(fulfilledRequest.collection.items)
+            setNextPage(fulfilledRequest.collection.links[-1])
+          })
+        }
+      })
+    }
+  }, [currentPageNumber, resultsPerPage])
+
+  const clampResultsPerPage = results => {
+    let clampedResult
+    if (results > 100) {
+      clampedResult = 100
+    } else if (results < 1) {
+      clampedResult = 1
+    } else {
+      clampedResult = results
+    }
+    setResultsInputContent(clampedResult)
+    return clampedResult
+  }
 
   return (
     <div className="App">
@@ -47,6 +75,16 @@ function App() {
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />
       <Search setSearchResults={setSearchResults} />
+      <label>
+        <span className="text">Results per Page:</span>{' '}
+        <input
+          value={resultsInputContent}
+          onChange={e => setResultsInputContent(e.target.value.replace(/\D/, ''))}
+          onBlur={() => {
+            setResultsPerPage(clampResultsPerPage(resultsInputContent))
+          }}
+        ></input>
+      </label>
       <Results
         searchResults={searchResults}
         setModal={setPick}
