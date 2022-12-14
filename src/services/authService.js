@@ -14,10 +14,10 @@ export function SignOut() {
   return (
     <div style={{ paddingTop: '15px' }}>
       Hello, {auth.currentUser.displayName} &nbsp;
-      <button style={{ marginRight: '100px' }} onClick={() => signOut(auth)}>
+      <button style={{ marginRight: '150px', marginBottom: '30px' }} onClick={() => signOut(auth)}>
         Favorites
       </button>
-      <button style={{ marginRight: '15px' }} onClick={() => signOut(auth)}>
+      <button style={{ marginRight: '15px', marginBottom: '30px' }} onClick={() => signOut(auth)}>
         Sign Out
       </button>
     </div>
