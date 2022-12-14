@@ -20,7 +20,7 @@ function Modal({ pick, setPick, user }) {
             {user && (
               <button
                 onClick={async () => {
-                  await addFavorite({ UserID: user.uid, NasaID: pick.data[0].nasa_id })
+                  await addFavorite({ UserID: user.uid, media: pick })
                 }}
               >
                 Favorite
