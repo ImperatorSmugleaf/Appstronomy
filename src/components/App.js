@@ -12,7 +12,7 @@ function App() {
   const user = useAuthentication()
 
   const [apod, setApod] = useState(null)
-  const [searchResults, setSearchResults] = useState([])
+  const [searchResults, setSearchResults] = useState('')
   const [pick, setPick] = useState(null)
   const [resultsPerPage, setResultsPerPage] = useState(20)
   const [currentResults, setCurrentResults] = useState(0)
