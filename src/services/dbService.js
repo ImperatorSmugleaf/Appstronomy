@@ -1,19 +1,31 @@
 import { db } from '../firebaseConfig'
-import { updateDoc, increment, arrayUnion, doc, getDoc, setDoc } from 'firebase/firestore'
+import { updateDoc, increment, arrayUnion, doc, getDoc, setDoc, getDocs } from 'firebase/firestore'
 
 export async function addFavorite({ UserID, NasaID }) {
   const snapshot_user = await getDoc(doc(db, 'users', UserID))
   const snapshot_pop = await getDoc(doc(db, 'popularMedia', NasaID))
   if (snapshot_user.exists()) {
-    const snapshot_fav = await getDoc(doc(db, 'users', UserID, 'favorites', NasaID))
-    if (snapshot_fav.exists()) {
+    var check = false
+    const snap_fav = await getDoc(doc(db, 'users', UserID))
+    const arr = snap_fav.data().favorites
+    for (var i = 0; i < arr.length; i++) {
+      console.log(arr[i])
+      if (arr[i] == NasaID) {
+        check = true
+      }
+    }
+    if (check) {
+      console.log('Already in user favorites')
       return {}
     } else {
+      console.log('Added to user favorites')
       await updateDoc(doc(db, 'users', UserID), { favorites: arrayUnion(NasaID) })
       if (snapshot_pop.exists()) {
+        console.log('Added to count')
         await updateDoc(doc(db, 'popularMedia', NasaID), { Count: increment(1) })
         return {}
       } else {
+        console.log('Added to popular media')
         await setDoc(doc(db, 'popularMedia', NasaID), { Count: 1 })
         return {}
       }
@@ -26,14 +38,14 @@ export async function addFavorite({ UserID, NasaID }) {
 
 // NOT FINISHED: This only gets the first 20 articles. In a real app,
 // you implement pagination.
-export async function fetchFavorites({ UserID }) {
-  const snapshot = await getDocs(doc(db, 'users', UserID, 'favorites'))
-  for (var i = 0; i < snapshot.length; i++) {
-    snapshot[i]
-  }
+// export async function fetchFavorites({ UserID }) {
+//   const snapshot = await getDoc(doc(db, 'users', UserID))
+//   for (var i = 0; i < snapshot.data().favorites.length; i++) {
+//     snapshot[i]
+//   }
 
-  return snapshot.docs.map(doc => ({
-    id: doc.id,
-    ...doc.data()
-  }))
-}
+//   return snapshot.docs.map(doc => ({
+//     id: doc.id,
+//     ...doc.data()
+//   }))
+// }

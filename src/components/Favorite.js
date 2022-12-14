@@ -5,6 +5,7 @@ import Results from './Results'
 import Modal from './Modal'
 import { useState, useEffect } from 'react'
 import { SignIn, SignOut2, useAuthentication } from '../services/authService'
+import App from './App'
 
 const apodURL = `https://classproxy.rtoal.repl.co/apod`
 
@@ -14,6 +15,7 @@ export function Favorite() {
   const [apod, setApod] = useState(null)
   const [data, setData] = useState(null)
   const [pick, setPick] = useState(null)
+  const [viewingFavorites, setViewingFavorites] = useState(true)
 
   useEffect(() => {
     fetch(apodURL).then(response => {
@@ -35,15 +37,21 @@ export function Favorite() {
 
   return (
     <div className="App">
-      {pick && <Modal pick={pick} setPick={setPick} />}
-      <header>
-        Favorites
-        {!user ? <SignIn /> : <SignOut2 />}
-      </header>
-      <div className="Stars"></div>
-      <ApodDisplay apod={apod} />
-      <Search setData={setData} />
-      <Results data={data} setModal={setPick} />
+      {!viewingFavorites ? (
+        <App setViewingFavorites={setViewingFavorites} />
+      ) : (
+        <div>
+          {/* {pick && <Modal pick={pick} setPick={setPick} />} */}
+          <header>
+            Favorites
+            {!user ? <SignIn /> : <SignOut2 setViewingFavorites={setViewingFavorites} />}
+          </header>
+          <div className="Stars"></div>
+          <ApodDisplay apod={apod} />
+          {/* <Search setData={setData} /> */}
+          <Results data={data} setModal={setPick} />
+        </div>
+      )}
     </div>
   )
 }

@@ -27,24 +27,24 @@ export function SignOut({ setViewingFavorites }) {
   return (
     <div style={{ paddingTop: '15px' }}>
       Hello, {auth.currentUser.displayName} &nbsp;
-      <button style={{ marginRight: '150px', marginBottom: '30px' }} onClick={() => setViewingFavorites(true)}>
+      <button style={{ marginBottom: '30px' }} onClick={() => setViewingFavorites(true)}>
         Favorites
       </button>
-      <button style={{ marginRight: '15px', marginBottom: '30px' }} onClick={() => signOut(auth)}>
+      <button style={{ marginBottom: '30px' }} onClick={() => signOut(auth)}>
         Sign Out
       </button>
     </div>
   )
 }
 
-export function SignOut2() {
+export function SignOut2({ setViewingFavorites }) {
   return (
     <div style={{ paddingTop: '15px' }}>
       Hello, {auth.currentUser.displayName} &nbsp;
-      <button style={{ marginRight: '150px', marginBottom: '30px' }} onClick={() => '../components/App'}>
+      <button style={{ marginBottom: '30px' }} onClick={() => setViewingFavorites(false)}>
         Home
       </button>
-      <button style={{ marginRight: '15px', marginBottom: '30px' }} onClick={() => signOut(auth)}>
+      <button style={{ marginBottom: '30px' }} onClick={() => signOut(auth)}>
         Sign Out
       </button>
     </div>
