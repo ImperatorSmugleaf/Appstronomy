@@ -1,3 +1,12 @@
+/**
+ * Author: Kieran Ahn
+ *
+ * This is the Modal component. This only appears when a user
+ * clicks on an image in the search results. It contains details
+ * about the selected image as well as an option for the user to
+ * favorite it.
+ */
+
 import { addFavorite } from '../services/dbService'
 
 function Modal({ pick, setPick, user }) {

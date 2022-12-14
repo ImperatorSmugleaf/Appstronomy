@@ -1,3 +1,11 @@
+/**
+ * Author: Kieran Ahn
+ *
+ * This is the Search component. It contains the search bar for
+ * the app, and it handles fetching image data from NASA's API and
+ * passing it back to everyone else.
+ */
+
 import { useState } from 'react'
 
 function Search({ setSearchResults, setNextPage, setCurrentPageNumber }) {
