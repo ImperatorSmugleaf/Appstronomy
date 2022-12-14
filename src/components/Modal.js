@@ -2,7 +2,7 @@ function Modal({ pick, setPick }) {
   return (
     <>
       <div id="modalBg" onClick={() => setPick(null)} />
-      <main id="modalContent">
+      <main id="modalContent" className="text">
         <figure>
           <figcaption>
             {pick.data[0].title} <button onClick={() => setPick(null)}>Close</button>
