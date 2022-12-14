@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Search({ setSearchResults }) {
+function Search({ setNasaData, setNextPage }) {
   const [advancedSearch, setAdvancedSearch] = useState(false)
   const [query, setQuery] = useState('')
   const [center, setCenter] = useState('')
@@ -46,12 +46,17 @@ function Search({ setSearchResults }) {
     fetch(request).then(response => {
       if (response.status >= 200 && response.status < 400) {
         if (response?.reason) {
-          setSearchResults(`Search failed! ${response.reason}`)
+          setNasaData(`Search failed! ${response.reason}`)
+          setNextPage(null)
         } else {
-          response.json().then(setSearchResults)
+          response.json().then(fulfilledRequest => {
+            setNasaData(fulfilledRequest.collection.items)
+            setNextPage(fulfilledRequest.collection.links[-1])
+          })
         }
       } else {
-        setSearchResults(`Something went wrong! Error ${response.status}`)
+        setNasaData(`Something went wrong! Error ${response.status}`)
+        setNextPage(null)
       }
     })
   }
@@ -98,7 +103,10 @@ function Search({ setSearchResults }) {
   ) : (
     <form Id="search" onSubmit={submit}>
       <button type="submit">Search</button>
-      <input value={query} onChange={e => setQuery(e.target.value)} />
+      <label>
+        <span className="text">Search: </span>
+        <input value={query} onChange={e => setQuery(e.target.value)} />
+      </label>
       <button type="button" onClick={() => setAdvancedSearch(true)}>
         Advanced Search
       </button>
