@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Search({ setData }) {
+function Search({ setSearchResults }) {
   const [advancedSearch, setAdvancedSearch] = useState(false)
   const [query, setQuery] = useState('')
   const [center, setCenter] = useState('')
@@ -46,12 +46,12 @@ function Search({ setData }) {
     fetch(request).then(response => {
       if (response.status >= 200 && response.status < 400) {
         if (response?.reason) {
-          setData(`Search failed! ${response.reason}`)
+          setSearchResults(`Search failed! ${response.reason}`)
         } else {
-          response.json().then(setData)
+          response.json().then(setSearchResults)
         }
       } else {
-        setData(`Something went wrong! Error ${response.status}`)
+        setSearchResults(`Something went wrong! Error ${response.status}`)
       }
     })
   }
