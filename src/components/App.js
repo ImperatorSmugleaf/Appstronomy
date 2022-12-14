@@ -4,7 +4,7 @@ import Search from './Search'
 import Results from './Results'
 import Modal from './Modal'
 import { useState, useEffect } from 'react'
-import { SignIn, SignOut, useAuthentication } from '../services/authService'
+import { checkUser, SignIn, SignOut, useAuthentication } from '../services/authService'
 
 const apodURL = `https://classproxy.rtoal.repl.co/apod`
 const MAX_RESULTS_FROM_API = 100
@@ -82,13 +82,7 @@ function App() {
   return (
     <div className="App">
       {pick && <Modal pick={pick} setPick={setPick} />}
-      <header>
-        Astronomy Picture of the day
-        <button id="Login" className="bigButton">
-          {' '}
-          Placeholder{' '}
-        </button>
-      </header>
+      <header>Astronomy Picture of the day {!user ? <SignIn /> : <SignOut />}</header>
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />
       <Search
