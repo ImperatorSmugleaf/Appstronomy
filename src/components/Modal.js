@@ -32,7 +32,7 @@ function Modal({ pick, setPick, user }) {
         </figure>
         <section className="text">
           <p>
-            <b>Description:</b> {pick.data[0].description}
+            <b>Description:</b> {pick.data[0].description_508}
           </p>
           <p>
             <b>Nasa ID:</b> {pick.data[0].nasa_id}
