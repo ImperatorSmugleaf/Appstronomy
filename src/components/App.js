@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react'
 import { SignIn, SignOut, useAuthentication } from '../services/authService'
 
 const apodURL = `https://classproxy.rtoal.repl.co/apod`
+const MAX_RESULTS_FROM_API = 100
 
 function App() {
   const user = useAuthentication()
@@ -60,8 +61,8 @@ function App() {
 
   const clampResultsPerPage = results => {
     let clampedResult
-    if (results > 100) {
-      clampedResult = 100
+    if (results > MAX_RESULTS_FROM_API) {
+      clampedResult = MAX_RESULTS_FROM_API
     } else if (results < 1) {
       clampedResult = 1
     } else {
