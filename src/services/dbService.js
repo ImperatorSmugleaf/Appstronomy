@@ -1,19 +1,5 @@
 import { db } from '../firebaseConfig'
-import {
-  collection,
-  query,
-  getDocs,
-  addDoc,
-  orderBy,
-  limit,
-  Timestamp,
-  updateDoc,
-  increment,
-  arrayUnion,
-  doc,
-  getDoc,
-  setDoc
-} from 'firebase/firestore'
+import { updateDoc, increment, arrayUnion, doc, getDoc, setDoc } from 'firebase/firestore'
 
 export async function addFavorite({ UserID, NasaID }) {
   const snapshot_user = await getDoc(doc(db, 'users', UserID))
@@ -40,14 +26,14 @@ export async function addFavorite({ UserID, NasaID }) {
 
 // NOT FINISHED: This only gets the first 20 articles. In a real app,
 // you implement pagination.
-// export async function fetchFavorites({ UserID }) {
-//   const snapshot = await getDocs(doc(db, 'users', UserID, 'favorites'))
-//   for (var i = 0; i < snapshot.length; i++) {
-//     snapshot[i]
-//   }
+export async function fetchFavorites({ UserID }) {
+  const snapshot = await getDocs(doc(db, 'users', UserID, 'favorites'))
+  for (var i = 0; i < snapshot.length; i++) {
+    snapshot[i]
+  }
 
-//   return snapshot.docs.map(doc => ({
-//     id: doc.id,
-//     ...doc.data()
-//   }))
-// }
+  return snapshot.docs.map(doc => ({
+    id: doc.id,
+    ...doc.data()
+  }))
+}

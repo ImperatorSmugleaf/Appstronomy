@@ -3,6 +3,8 @@ import { signInWithPopup, GoogleAuthProvider, signOut } from 'firebase/auth'
 import { auth } from '../firebaseConfig'
 import { doc, getDoc, setDoc } from 'firebase/firestore'
 import { db } from '../firebaseConfig'
+import { Favorite } from '../components/Favorite'
+import App from '../components/App'
 
 export function SignIn() {
   return (
@@ -25,8 +27,22 @@ export function SignOut() {
   return (
     <div style={{ paddingTop: '15px' }}>
       Hello, {auth.currentUser.displayName} &nbsp;
-      <button style={{ marginRight: '150px', marginBottom: '30px' }} onClick={() => signOut(auth)}>
+      <button style={{ marginRight: '150px', marginBottom: '30px' }} onClick={() => '../components/Favorite'}>
         Favorites
+      </button>
+      <button style={{ marginRight: '15px', marginBottom: '30px' }} onClick={() => signOut(auth)}>
+        Sign Out
+      </button>
+    </div>
+  )
+}
+
+export function SignOut2() {
+  return (
+    <div style={{ paddingTop: '15px' }}>
+      Hello, {auth.currentUser.displayName} &nbsp;
+      <button style={{ marginRight: '150px', marginBottom: '30px' }} onClick={() => '../components/App'}>
+        Home
       </button>
       <button style={{ marginRight: '15px', marginBottom: '30px' }} onClick={() => signOut(auth)}>
         Sign Out
