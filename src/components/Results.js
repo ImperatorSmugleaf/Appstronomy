@@ -1,4 +1,10 @@
-import { useState } from 'react'
+/**
+ * Author: Kieran Ahn
+ *
+ * This is the Results component. It handles displaying all
+ * search results to the user and activates the modal if a
+ * user clicks on an image.
+ */
 
 function Results({ searchResults, setModal, currentResult, resultsPerPage }) {
   return searchResults ? (
