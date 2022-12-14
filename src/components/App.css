@@ -201,11 +201,6 @@ form {
   width: auto;
 }
 
-#modalTitle {
-  display: flex;
-  flex-direction: column;
-}
-
 .text {
   -webkit-text-fill-color: white;
   -webkit-text-stroke: 0.25px black;
