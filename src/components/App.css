@@ -207,6 +207,6 @@ form {
 }
 
 .text {
-  color: white;
-  text-shadow: -4px, 4px, 0, black, 4px, 4px, 0, black, 4px, -4px, 0, black, -4px, -4px, 0, black;
+  -webkit-text-fill-color: white;
+  -webkit-text-stroke: 0.25px black;
 }
