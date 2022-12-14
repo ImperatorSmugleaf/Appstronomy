@@ -59,51 +59,40 @@ function Search({ setSearchResults }) {
   return advancedSearch ? (
     <form id="advanceSearch" onSubmit={submit}>
       <button id="advanceSearchButton" type="submit">
-        Search
+        Search{' '}
       </button>
       <label>
-        All Text
-        <input value={query} onChange={e => setQuery(e.target.value)} />
+        All Text <input value={query} onChange={e => setQuery(e.target.value)} />
       </label>
       <label>
-        NASA Center
-        <input value={center} onChange={e => setCenter(e.target.value)} />
+        NASA Center <input value={center} onChange={e => setCenter(e.target.value)} />
       </label>
       <label>
-        Description
-        <input value={description} onChange={e => setDescription(e.target.value)} />
+        Description <input value={description} onChange={e => setDescription(e.target.value)} />
       </label>
       <label>
-        Keywords
-        <input value={keywords} onChange={e => setKeywords(e.target.value)} />
+        Keywords <input value={keywords} onChange={e => setKeywords(e.target.value)} />
       </label>
       <label>
-        Location
-        <input value={location} onChange={e => setLocation(e.target.value)} />
+        Location <input value={location} onChange={e => setLocation(e.target.value)} />
       </label>
       <label>
-        Title
-        <input value={title} onChange={e => setTitle(e.target.value)} />
+        Title <input value={title} onChange={e => setTitle(e.target.value)} />
       </label>
       <label>
-        NASA ID
-        <input value={nasaId} onChange={e => setNasaId(e.target.value)} />
+        NASA ID <input value={nasaId} onChange={e => setNasaId(e.target.value)} />
       </label>
       <label>
-        Photographer
-        <input value={photographer} onChange={e => setPhotographer(e.target.value)} />
+        Photographer <input value={photographer} onChange={e => setPhotographer(e.target.value)} />
       </label>
       <label>
-        Secondary Creator
-        <input value={secondaryCreator} onChange={e => setSecondaryCreator(e.target.value)} />
+        Secondary Creator <input value={secondaryCreator} onChange={e => setSecondaryCreator(e.target.value)} />
       </label>
       <label>
-        Start Year
-        <input value={startYear} onChange={e => setStartYear(e.target.value)} />
+        Start Year <input value={startYear} onChange={e => setStartYear(e.target.value)} />
       </label>
       <label>
-        End Year
-        <input value={endYear} onChange={e => setEndYear(e.target.value)} />
+        End Year <input value={endYear} onChange={e => setEndYear(e.target.value)} />
       </label>
     </form>
   ) : (
