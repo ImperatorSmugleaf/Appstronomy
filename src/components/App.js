@@ -11,8 +11,10 @@ function App() {
   // const user = useAuthentication();
 
   const [apod, setApod] = useState(null)
-  const [data, setData] = useState(null)
+  const [searchResults, setSearchResults] = useState(null)
   const [pick, setPick] = useState(null)
+  const [resultsPerPage, setResultsPerPage] = useState(20)
+  const [currentResults, setCurrentResults] = useState(0)
 
   useEffect(() => {
     fetch(apodURL).then(response => {
@@ -32,6 +34,8 @@ function App() {
     }
   }, [pick])
 
+  useEffect(() => {})
+
   return (
     <div className="App">
       {pick && <Modal pick={pick} setPick={setPick} />}
@@ -41,8 +45,13 @@ function App() {
       </header>
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />
-      <Search setData={setData} />
-      <Results data={data} setModal={setPick} />
+      <Search setSearchResults={setSearchResults} />
+      <Results
+        searchResults={searchResults}
+        setModal={setPick}
+        resultsPerPage={resultsPerPage}
+        currentResults={currentResults}
+      />
     </div>
   )
 }
