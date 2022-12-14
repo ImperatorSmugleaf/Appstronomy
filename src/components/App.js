@@ -83,7 +83,11 @@ function App() {
       </header>
       <div className="Stars"></div>
       <ApodDisplay apod={apod} />
-      <Search setSearchResults={setSearchResults} setNextPage={setNextPage} />
+      <Search
+        setSearchResults={setSearchResults}
+        setNextPage={setNextPage}
+        setCurrentPageNumber={setCurrentPageNumber}
+      />
       <label>
         <span className="text">Results per Page:</span>{' '}
         <input

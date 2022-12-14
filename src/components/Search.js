@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-function Search({ setSearchResults, setNextPage }) {
+function Search({ setSearchResults, setNextPage, setCurrentPageNumber }) {
   const [advancedSearch, setAdvancedSearch] = useState(false)
   const [query, setQuery] = useState('')
   const [center, setCenter] = useState('')
@@ -50,6 +50,7 @@ function Search({ setSearchResults, setNextPage }) {
           setNextPage(null)
         } else {
           response.json().then(fulfilledRequest => {
+            setCurrentPageNumber(0)
             setSearchResults(fulfilledRequest.collection.items)
             setNextPage(fulfilledRequest.collection.links[fulfilledRequest.collection.links.length - 1]?.href)
           })
