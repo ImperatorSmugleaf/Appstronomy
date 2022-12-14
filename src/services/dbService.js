@@ -35,17 +35,3 @@ export async function addFavorite({ UserID, NasaID }) {
     return {}
   }
 }
-
-// NOT FINISHED: This only gets the first 20 articles. In a real app,
-// you implement pagination.
-// export async function fetchFavorites({ UserID }) {
-//   const snapshot = await getDoc(doc(db, 'users', UserID))
-//   for (var i = 0; i < snapshot.data().favorites.length; i++) {
-//     snapshot[i]
-//   }
-
-//   return snapshot.docs.map(doc => ({
-//     id: doc.id,
-//     ...doc.data()
-//   }))
-// }

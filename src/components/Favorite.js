@@ -6,6 +6,8 @@ import Modal from './Modal'
 import { useState, useEffect } from 'react'
 import { SignIn, SignOut2, useAuthentication } from '../services/authService'
 import App from './App'
+import { auth, db } from '../firebaseConfig'
+import { getDoc, doc } from 'firebase/firestore'
 
 const apodURL = `https://classproxy.rtoal.repl.co/apod`
 
@@ -36,7 +38,7 @@ export function Favorite() {
   }, [pick])
 
   return (
-    <div className="App">
+    <div className="Favorites">
       {!viewingFavorites ? (
         <App setViewingFavorites={setViewingFavorites} />
       ) : (
@@ -47,11 +49,30 @@ export function Favorite() {
             {!user ? <SignIn /> : <SignOut2 setViewingFavorites={setViewingFavorites} />}
           </header>
           <div className="Stars"></div>
-          <ApodDisplay apod={apod} />
-          {/* <Search setData={setData} /> */}
-          <Results data={data} setModal={setPick} />
+          <FetchFavorites UserID={auth.currentUser.uid} />
+          {/* <Results data={data} setModal={setPick} /> */}
         </div>
       )}
     </div>
   )
+}
+
+export async function FetchFavorites({ UserID }) {
+  const snapshot = await getDoc(doc(db, 'users', UserID)).map(doc => doc.data())
+  let arr = []
+  for (var i = 0; i < snapshot.data().favorites.length; i++) {
+    let request
+    request = `https://images-api.nasa.gov/search?nasa_id=` + snapshot.data().favorites[i]
+    await fetch(request).then(response => {
+      response
+        .json()
+        .then(response2 => response2.collection.items[0].href)
+        .then(searchResult => arr.push(searchResult))
+    })
+  }
+  return arr.map(doc => (
+    <figure>
+      <img src={doc} className="thumbnail" />
+    </figure>
+  ))
 }

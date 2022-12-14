@@ -27,10 +27,10 @@ export function SignOut({ setViewingFavorites }) {
   return (
     <div style={{ paddingTop: '15px' }}>
       Hello, {auth.currentUser.displayName} &nbsp;
-      <button style={{ marginBottom: '30px' }} onClick={() => setViewingFavorites(true)}>
+      <button className="bigButton" style={{ marginRight: '150px' }} onClick={() => setViewingFavorites(true)}>
         Favorites
       </button>
-      <button style={{ marginBottom: '30px' }} onClick={() => signOut(auth)}>
+      <button className="bigButton" onClick={() => signOut(auth)}>
         Sign Out
       </button>
     </div>
@@ -41,10 +41,10 @@ export function SignOut2({ setViewingFavorites }) {
   return (
     <div style={{ paddingTop: '15px' }}>
       Hello, {auth.currentUser.displayName} &nbsp;
-      <button style={{ marginBottom: '30px' }} onClick={() => setViewingFavorites(false)}>
+      <button className="bigButton" style={{ marginRight: '150px' }} onClick={() => setViewingFavorites(false)}>
         Home
       </button>
-      <button style={{ marginBottom: '30px' }} onClick={() => signOut(auth)}>
+      <button className="bigButton" onClick={() => signOut(auth)}>
         Sign Out
       </button>
     </div>
