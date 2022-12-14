@@ -84,7 +84,7 @@ function App() {
   return (
     <div className="App">
       {viewingFavorites ? (
-        <Favorite setViewingFavorites={setViewingFavorites} />
+        <Favorite user={user} setViewingFavorites={setViewingFavorites} />
       ) : (
         <div>
           {pick && <Modal pick={pick} setPick={setPick} user={user} />}
