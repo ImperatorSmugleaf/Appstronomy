@@ -43,7 +43,7 @@ function App() {
         if (response.status >= 200 && response.status < 400) {
           response.json().then(fulfilledRequest => {
             searchResults.concat(fulfilledRequest.collection.items)
-            setNextPage(fulfilledRequest.collection.links[-1])
+            setNextPage(fulfilledRequest.collection.links[fulfilledRequest.collection.links.length - 1]?.href)
           })
         }
       })
