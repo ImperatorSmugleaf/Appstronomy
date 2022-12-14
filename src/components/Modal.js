@@ -12,24 +12,24 @@ function Modal({ pick, setPick }) {
         </figure>
         <section>
           <p>
-            <mark>Description:</mark> {pick.data[0].description}
+            <b>Description:</b> {pick.data[0].description}
           </p>
           <p>
-            <mark>Nasa ID:</mark> {pick.data[0].nasa_id}
+            <b>Nasa ID:</b> {pick.data[0].nasa_id}
           </p>
           {pick.data[0].photographer && (
             <p>
-              <mark>Photographer:</mark> {pick.data[0].photographer}
+              <b>Photographer:</b> {pick.data[0].photographer}
             </p>
           )}
           {pick.data[0].secondary_creator && (
             <p>
-              <mark>Secondary Creator:</mark> {pick.data[0].secondary_creator}
+              <b>Secondary Creator:</b> {pick.data[0].secondary_creator}
             </p>
           )}
           {pick.data[0].center && (
             <p>
-              <mark>Published by:</mark> {pick.data[0].center}
+              <b>Published by:</b> {pick.data[0].center}
             </p>
           )}
         </section>
