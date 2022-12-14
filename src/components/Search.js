@@ -51,7 +51,7 @@ function Search({ setNasaData, setNextPage }) {
         } else {
           response.json().then(fulfilledRequest => {
             setNasaData(fulfilledRequest.collection.items)
-            setNextPage(fulfilledRequest.collection.links[-1])
+            setNextPage(fulfilledRequest.collection.links[fulfilledRequest.collection.links.length - 1]?.href)
           })
         }
       } else {
