@@ -5,7 +5,7 @@ function ApodDisplay({ apod }) {
     ) : (
       <figure>
         <p id="apodHeader">Astronomy Picture of the Day:</p>
-        <div class="imgbox">
+        <div className="imgbox">
           <img id="apodImg" src={apod.url} alt={apod.title}></img>
         </div>
         <figcaption id="apodExplanation">{apod.explanation}</figcaption>
